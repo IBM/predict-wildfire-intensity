@@ -34,21 +34,13 @@ When the reader has completed this Code Pattern, they will understand how to:
 # Watch the Video
 -->
 
+# Prerequisites
+
+* For this pattern you will need to download [current wildfire data](https://firms.modaps.eosdis.nasa.gov/active_fire/#firms-txt) in CSV format. Please choose `7d` for 7 days worth of information.
+* You may additionally download [archived data](https://firms.modaps.eosdis.nasa.gov/download/) which will take time due to the request process.
+
+
 # Steps
-Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locally.
-
-## Deploy to IBM Cloud
-<!--Update the repo and tracking id-->
-[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/predict-wildfires.git)
-
-1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
-
-<!--optional step-->
-2. In Toolchains, click on ``Delivery Pipeline`` to watch while the app is deployed. Once deployed, the app can be viewed by clicking ``View app``.
-![](doc/source/images/toolchain-pipeline.png)
-
-## Run locally
-> NOTE: These steps are only needed when running locally instead of using the ``Deploy to IBM Cloud`` button.
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create Watson Studio services with IBM Cloud](#2-create-watson-studio-services-with-ibm-cloud)
@@ -65,7 +57,42 @@ Clone the `predict-wildfires` repository locally. In a terminal, run:
 $ git clone https://github.com/IBM/predict-wildfires
 ```
 
-### Create Watson Studio services with IBM Cloud
+### 2. Create Watson Studio services with IBM Cloud
+
+* On [Watson Studio](https://dataplatform.cloud.ibm.com/) choose `New project`:
+
+![](https://github.com/IBM/pattern-images/blob/master/watson-studio/studio_choices.png)
+
+and pick `Data Science`:
+
+![](https://github.com/IBM/pattern-images/blob/master/watson-studio/project_choices.png)
+
+* Name the project and select your object storage:
+
+![](https://github.com/IBM/pattern-images/blob/master/watson-studio/new_project.png)
+
+* Choose `+ Add to project` -> `Data asset` or click the `10/01` button and add the data you downloaded in [Prerequisites](#prerequisites) (MODIS_C6_*_7d.csv):
+
+![](https://github.com/IBM/pattern-images/blob/master/watson-studio/watson-studio-add-data.png)
+
+* Under the `Settings` tab -> `Associated Services` choose `+ Add service` -> `Watson` and select `Machine Learning`. Either choose an `Existing` ML Service or create a `New` one.
+
+* Under the `Settings` tab -> `Associated Services` choose `+ Add service` -> `Spark`. Either choose an `Existing` Spark Service or create a `New` one.
+
+* Under the `Assets` tab -> `Models` choose `+ New Watson Machine Learning model`. Pick a name, the default `Select model type` of `Model builder`, and `Automatic` for "Prepare my data...".
+
+* For `Select Data` choose the `MODIS_6_*_7d.csv` file you added. When finished click `Next`.
+
+* For `Select a Technique` -> `Column value to predict (Label Col)` choose `brightness`. This represents the intensity of the fire as measured by the brightness detected from a satellite.
+
+* For `Feature columns` choose all the Integer and Decimal features: `latitude`,`longitude`,`scan`,`track`,`confidence`,`bright_t31`, and `frp`.
+
+* For a Technique choose `Linear Regression` and Click `Next`.
+
+* The model will train, and then `Save` the model.
+
+* If you have downloaded archived data, you may create another model using that data using the same process.
+
 # Links
 
 # Learn more
