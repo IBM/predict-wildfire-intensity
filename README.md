@@ -16,9 +16,10 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ## Flow
 
-1. Step 1.
-2. Step 2.
-3. Step 3.
+1. Use Watson Studio to add data assets and services.
+2. Create the Machine Learning Model in Watson Machine Learning.
+3. User interacts with Web UI to choose location of a fire.
+4. Web UI interacts with ML model to predict brightness of fire.
 
 ## Included components
 
