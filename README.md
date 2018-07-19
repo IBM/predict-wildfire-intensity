@@ -43,11 +43,13 @@ When the reader has completed this Code Pattern, they will understand how to:
 # Steps
 
 1. [Clone the repo](#1-clone-the-repo)
-2. [Create Watson Studio services with IBM Cloud](#2-create-watson-studio-services-with-ibm-cloud)
-3. [Import the Conversation workspace](#3-import-the-conversation-workspace)
-4. [Load the Discovery documents](#4-load-the-discovery-documents)
-5. [Configure credentials](#5-configure-credentials)
-5. [Run the application](#6-run-the-application)
+1. [Create Watson Studio services with IBM Cloud](#2-create-watson-studio-services-with-ibm-cloud)
+1. [Get the credentials](#3-get-the-credentials)
+1. [Either Deploy to IBM Cloud or Deploy locally]
+
+    3a. [Deploy to IBM Cloud](deploy-to-ibm-cloud)
+
+    3b. [Deploy locally](deploy-locally)
 
 ### 1. Clone the repo
 
@@ -92,6 +94,54 @@ and pick `Data Science`:
 * The model will train, and then `Save` the model.
 
 * If you have downloaded archived data, you may create another model using that data using the same process.
+
+* Once you've created the model, go to `Deployments` and click `+add Deployment`. Name it, keep the default `Web service`, and click `Save`. Leave this page open for the next step...
+
+
+
+### Get the credentials
+
+* If you haven't left it open from the previous step, from the [Watson Studio](https://dataplatform.cloud.ibm.com/home?context=analytics) project page, under the `Assets` tab, double click the `Watson Machine Learning` model you created earlier. Go to the `Deployments` tab and double click to open it.
+
+* Go to the `Implementation` tab and copy the Scoring End-point at the top. You will use this as `SCORING_URL` in either the IBM Cloud Runtime Environment Variable or the locally deployed `.env` file.
+
+* On your [Watson Studio](https://dataplatform.cloud.ibm.com/home?context=analytics) project page, got to the `Services` tab on the top menu bar, and navigate to the Watson Machine Learning service you created earlier. Double-click the service, go to `Service Credentials` -> `View Credentials`.
+
+![](https://github.com/IBM/pattern-images/blob/master/machine-learning/ML-service-credentials.png)
+
+* You will use the `username`, `password`, and `url` in either the Runtime Environment variables when [running on IBM Cloud](#deploy-to-ibm-cloud) or in the `server/.env` file when [running locally](#run-locally). These will be `WML_URL`, `WML_USERNAME`, and `WML_PASSWORD`.
+
+### Deploy to IBM Cloud
+
+[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/predict-wildfires)
+
+* Press the above ``Deploy to IBM Cloud`` button, under `IBM Cloud API Key:` choose `Create+`, and then click on ``Deploy``.
+
+To monitor the deployment, in Toolchains click on `Delivery Pipeline`  and view the logs while the apps is being deployed.
+
+* Once the app has deployed, Click on `Runtime` on the menu and navigate to the `Environment variables` tab.
+
+![](doc/source/images/UpdateCloudEnvVariables.png)
+
+* Update the 4 environment variables with the `SCORING_URL`, `WML_URL`, `WML_USERNAME`, and `WML_PASSWORD` that you saved during [Get the credentials](#get-the-credentials).
+The app will automatically restart and be ready for use.
+
+### Deploy locally
+
+* In the `server/` directory, move the `env.sample` file to `.env`.
+
+* Populate the file with the `SCORING_URL`, `WML_URL`, `WML_USERNAME`, and `WML_PASSWORD` that you saved during [Get the credentials](#get-the-credentials).
+
+```
+SCORING_URL=""
+WML_URL=""
+WML_USERNAME=""
+WML_PASSWORD=""
+```
+
+* Install the nodejs modules with `npm install`.
+
+* Start the app with `npm start`. The app will now be running and available on you machine ina a browser at `http://localhost:3000`.
 
 # Links
 
