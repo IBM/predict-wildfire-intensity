@@ -1,7 +1,5 @@
-# WORK IN PROGRESS - Please Visit Soon for the Completed Code
-
 [![Build Status](https://travis-ci.org/IBM/predict-wildfires.svg?branch=master)](https://travis-ci.org/IBM/predict-wildfires)
-# Predict Wildfires with Watson Studio Machine Learning
+# Predict Wildfire Intensity with Watson Studio Machine Learning
 
 For this Code Pattern, we will use [data on Wildfires](https://firms.modaps.eosdis.nasa.gov/active_fire/#firms-txt) from [NASA](https://earthdata.nasa.gov/) to predict the intensity of Wildfires, using [Watson Studio](https://console.bluemix.net/catalog/services/watson-studio) [Machine Learning](https://console.bluemix.net/catalog/services/machine-learning).
 NASA provides data for various things, from weather and climate to solar flares and wildfire. This data is paid for by U.S. taxpayers and is free to use. The missing component is machine learning, which can take data and train a model to predict one of the features of the data set. For this example, we'll grab wildfire data and build a model that can predict intensity of the fire base on latitude and longitude.
@@ -87,7 +85,7 @@ and pick `Data Science`:
 
 * For `Select a Technique` -> `Column value to predict (Label Col)` choose `brightness`. This represents the intensity of the fire as measured by the brightness detected from a satellite.
 
-* For `Feature columns` choose all the Integer and Decimal features: `latitude`,`longitude`,`scan`,`track`,`confidence`,`bright_t31`, and `frp`.
+* For `Feature columns` choose the features: `latitude` and `longitude`.
 
 * For a Technique choose `Linear Regression` and Click `Next`.
 
@@ -96,8 +94,6 @@ and pick `Data Science`:
 * If you have downloaded archived data, you may create another model using that data using the same process.
 
 * Once you've created the model, go to `Deployments` and click `+add Deployment`. Name it, keep the default `Web service`, and click `Save`. Leave this page open for the next step...
-
-
 
 ### Get the credentials
 
