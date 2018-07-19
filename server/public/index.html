@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Wildfire Predictor</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+  <form action = "/upload" method="post">
+    <fieldset>
+    <label for="lat">Enter your Latitude</label>
+      <input type = "text" id = "txtLat" name="txtLat" placeholder="Latitude"/>
+    <label for="lon">Enter your Longitude</label>
+      <input type = "text" id = "txtLong" name="txtLong" placeholder="Longitude"/>
+
+      <input type = "button"
+        value = "OK"
+        onclick = "setLatLng()"/>
+      <input type = "text"
+        id = "txtOut" />
+    </fieldset>
+ </form>
+
+ <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+ <script type="text/javascript" src="js/index.js"></script>
+
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATMJbbRPIuyfNiD8_LAU0EQJC05qZUCSo&callback=initMap">
+    </script>
+  </body>
+</html>
