@@ -81,7 +81,7 @@ and pick `Data Science`:
 
 * Under the `Assets` tab -> `Models` choose `+ New Watson Machine Learning model`. Pick a name, the default `Select model type` of `Model builder`, and `Automatic` for "Prepare my data...".
 
-* For `Select Data` choose the `MODIS_6_*_7d.csv` file you added. When finished click `Next`.
+* For `Select Data` choose the `MODIS_6_\*_7d.csv` file you added. When finished click `Next`.
 
 * For `Select a Technique` -> `Column value to predict (Label Col)` choose `brightness`. This represents the intensity of the fire as measured by the brightness detected from a satellite.
 
