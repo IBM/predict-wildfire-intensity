@@ -1,0 +1,13 @@
+---
+applications:
+- name: predict-wildfire-intensity
+  path: ./server
+  command: npm start
+  instances: 1
+  memory: 128M
+  random-route: false
+env:
+  SCORING_URL: placeholder
+  WML_URL: placeholder
+  WML_USERNAME: placeholder
+  WML_PASSWORD: placeholder
