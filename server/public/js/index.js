@@ -26,11 +26,15 @@ var global_position = {
 };
 var marker;
 var map;
+var geocoder;
+var infowindow;
 
 function initMap() {
   map = new google.maps.Map(
     document.getElementById('map'), {zoom: 4, center: global_position});
 
+  geocoder = new google.maps.Geocoder;
+  infowindow = new google.maps.InfoWindow;
 
   google.maps.event.addListener(map, 'click', function(event) {
     global_position= {lat: event.latLng.lat(), lng: event.latLng.lng()};
@@ -65,10 +69,25 @@ function  setLatLng(){
   };
 
 function onLatClick() {
-    //var txt = global_position;
-    placeMarker(global_position);
-    //invokeAjax(txt);
-    invokeAjax(global_position);
+    geocodeLatLng(geocoder, map, infowindow);
+//    placeMarker(global_position);
+    //invokeAjax(global_position);
+}
+
+function geocodeLatLng(geocoder, map, infowindow) {
+
+  geocoder.geocode({'location': global_position}, function(results, status) {
+    if (status === 'OK') {
+      if (results[0]) {
+        placeMarker(global_position);
+        invokeAjax(global_position);
+      } else {
+        window.alert('No results found');
+      }
+    } else {
+     window.alert('We cannot predict fire brightness over the ocean!');
+   }
+ });
 }
 
 function processOK(response) {
