@@ -1,3 +1,5 @@
+# Work In Progress. Please visit soon for completed code and instructions
+
 [![Build Status](https://travis-ci.org/IBM/predict-wildfires.svg?branch=master)](https://travis-ci.org/IBM/predict-wildfires)
 # Predict Wildfire Intensity with Watson Studio Machine Learning
 
