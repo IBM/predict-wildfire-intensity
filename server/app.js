@@ -42,7 +42,7 @@ application.use(bodyParser.urlencoded({ extended: true }));
 
 application.use(express.static(__dirname + "/public"));
 
-application.post('/upload', function(req, res) {
+application.post('/modelintensity', function(req, res) {
 
     var payload = '{"fields": ["latitude", "longitude"], "values": [[' + req.body.lat + ',' + req.body.lng + ']]}';
 
