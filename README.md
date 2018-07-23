@@ -38,7 +38,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 * For this pattern you will need to download [current wildfire data](https://firms.modaps.eosdis.nasa.gov/active_fire/#firms-txt) in CSV format. Please choose `7d` for 7 days worth of information.
 * You may additionally download [archived data](https://firms.modaps.eosdis.nasa.gov/download/) which will take time due to the request process.
-
+* You will need a [Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
 
 # Steps
 
@@ -107,7 +107,9 @@ and pick `Data Science`:
 
 ![](https://github.com/IBM/pattern-images/blob/master/machine-learning/ML-service-credentials.png)
 
-* You will use the `username`, `password`, and `url` in either the Runtime Environment variables when [running on IBM Cloud](#deploy-to-ibm-cloud) or in the `server/.env` file when [running locally](#run-locally). These will be `WML_URL`, `WML_USERNAME`, and `WML_PASSWORD`.
+* You will need your [Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
+
+* You will use the `username`, `password`, `url`, and 'maps API key' in either the Runtime Environment variables when [running on IBM Cloud](#deploy-to-ibm-cloud) or in the `server/.env` file when [running locally](#run-locally). These will be `WML_URL`, `WML_USERNAME`, `WML_PASSWORD`, and `MAP_APIKEY`.
 
 ### Deploy to IBM Cloud
 
@@ -121,20 +123,21 @@ To monitor the deployment, in Toolchains click on `Delivery Pipeline`  and view 
 
 ![](doc/source/images/UpdateCloudEnvVariables.png)
 
-* Update the 4 environment variables with the `SCORING_URL`, `WML_URL`, `WML_USERNAME`, and `WML_PASSWORD` that you saved during [Get the credentials](#get-the-credentials).
+* Update the 5 environment variables with the `SCORING_URL`, `WML_URL`, `WML_USERNAME`, `WML_PASSWORD`, and `MAP_APIKEY` that you saved during [Get the credentials](#get-the-credentials).
 The app will automatically restart and be ready for use.
 
 ### Deploy locally
 
 * In the `server/` directory, move the `env.sample` file to `.env`.
 
-* Populate the file with the `SCORING_URL`, `WML_URL`, `WML_USERNAME`, and `WML_PASSWORD` that you saved during [Get the credentials](#get-the-credentials).
+* Populate the file with the `SCORING_URL`, `WML_URL`, `WML_USERNAME`, `WML_PASSWORD`, and `MAP_APIKEY` that you saved during [Get the credentials](#get-the-credentials).
 
 ```
 SCORING_URL=""
 WML_URL=""
 WML_USERNAME=""
 WML_PASSWORD=""
+MAP_APIKEY=""
 ```
 
 * Install the nodejs modules with `npm install`.

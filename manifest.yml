@@ -11,3 +11,4 @@ env:
   WML_URL: placeholder
   WML_USERNAME: placeholder
   WML_PASSWORD: placeholder
+  MAP_APIKEY: placeholder

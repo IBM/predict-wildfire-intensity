@@ -23,6 +23,7 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const my_btoa = require("btoa");
 const express = require("express");
+const fs = require("fs");
 const application = express();
 const my_XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
@@ -35,6 +36,7 @@ var scoring_url = process.env.SCORING_URL;
 var wml_url = process.env.WML_URL;
 var wml_username = process.env.WML_USERNAME;
 var wml_password = process.env.WML_PASSWORD;
+var map_apikey= process.env.MAP_APIKEY;
 
 application.use(bodyParser.urlencoded({ extended: true }));
 
@@ -86,6 +88,18 @@ function wml_apiPost(scoring_url, token, payload, loadCallback, errorCallback){
 	oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	oReq.send(payload);
 }
+
+fs.readFile("public/index.html", 'utf8', function (err,data) {
+  if (err) {
+    console.log("error: " + err);
+    return;
+  }
+
+  var result = data.replace("APIKEY", map_apikey);
+  fs.writeFile("public/index.html", result, 'utf8', function (err) {
+      console.log("FS Write Err: " + err);
+  });
+});
 
 wml_api_Get(wml_url,
 	wml_username,
