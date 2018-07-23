@@ -17,102 +17,125 @@
  * under the License.
  */
 
-/* eslint-env browser */
+ // Initialize and add the map
+ var global_position = {
+   lat: 39.739236,
+   lng: -104.990251
+ };
+ var marker;
+ var map;
+ var geocoder;
+ var infowindow;
 
-// Initialize and add the map
-var global_position = {
-  lat: 39.739236,
-  lng: -104.990251
-};
-var marker;
-var map;
-var geocoder;
-var infowindow;
+ function initMap() {
+   map = new google.maps.Map(
+     document.getElementById('map'), {zoom: 4, center: global_position});
 
-function initMap() {
-  map = new google.maps.Map(
-    document.getElementById('map'), {zoom: 4, center: global_position});
+   geocoder = new google.maps.Geocoder;
+   infowindow = new google.maps.InfoWindow;
 
-  geocoder = new google.maps.Geocoder;
-  infowindow = new google.maps.InfoWindow;
+   google.maps.event.addListener(map, 'click', function(event) {
+     hideIntroMessage()
+     global_position= {lat: event.latLng.lat(), lng: event.latLng.lng()};
+     showLatLng();
+     geocodeLatLng(geocoder, map, infowindow);
+   });
+ }
 
-  google.maps.event.addListener(map, 'click', function(event) {
-    global_position= {lat: event.latLng.lat(), lng: event.latLng.lng()};
-    document.getElementById("txtLat").value = event.latLng.lat().toFixed(3);
-    document.getElementById("txtLong").value = event.latLng.lng().toFixed(3);
-    onLatClick();
-  });
-
-  placeMarker(global_position);
-
-}
-
-function placeMarker(location) {
-
-    if (marker == undefined){
-	marker = new google.maps.Marker({
-	    position: location,
-	    map: map,
-	    animation: google.maps.Animation.DROP,
-	});
-    }
-    else{
-	marker.setPosition(location);
-    }
-    map.setCenter(location);
-
-  }
-
-function  setLatLng(){
-    global_position = {lat: parseFloat(txtLat.value).toFixed(3), lng: parseFloat(txtLong.value).toFixed(3)};
-    onLatClick();
-  };
-
-function onLatClick() {
-    geocodeLatLng(geocoder, map, infowindow);
-//    placeMarker(global_position);
-    //invokeAjax(global_position);
-}
-
-function geocodeLatLng(geocoder, map, infowindow) {
-
-  geocoder.geocode({'location': global_position}, function(results, status) {
-    if (status === 'OK') {
-      if (results[0]) {
-        placeMarker(global_position);
-        invokeAjax(global_position);
-      } else {
-        window.alert('No results found');
-      }
-    } else {
-     window.alert('We cannot predict fire brightness over the ocean!');
+ function placeMarker(location) {
+   if (marker == undefined){
+     marker = new google.maps.Marker({
+   	    position: location,
+   	    map: map,
+   	    animation: google.maps.Animation.DROP,
+   	});
    }
- });
-}
+   else{
+      marker.setPosition(location);
+   }
+   map.setCenter(location);
+ }
 
-function processOK(response) {
-    console.error("response");
-    console.error(response);
+ /*
+ * Hides the "Please select..." message and shows the predicton results
+ */
+ function hideIntroMessage () {
+   document.getElementById('help-message').style.display = 'none';
+   document.getElementById('ml').style.display = 'flex'
+ }
 
-    document.getElementById("txtOut").value = response.values[0][3].toFixed(3);
-}
+ /*
+ * Updates the lat/long values shown in the HTML
+ */
+ function showLatLng() {
+   document.getElementById("txtLat").innerHTML = global_position.lat.toFixed(3);
+   document.getElementById("txtLong").innerHTML = global_position.lng.toFixed(3);
+ }
 
-function processNotOK() {
-    chat('Error', 'Error whilst attempting to talk to Bot');
-}
+ function geocodeLatLng(geocoder, map, infowindow) {
+   // check if the clicked point is over the ocean or not
+   geocoder.geocode({'location': global_position}, function(results, status) {
+     if (status === 'OK') {
+       if (results[0]) {
+         placeMarker(global_position);
+         getWatsonMLIntensity(global_position);
+       } else {
+         window.alert('No results found');
+       }
+     } else {
+      window.alert('We cannot predict fire brightness over the ocean!');
+    }
+  });
+ }
 
-function invokeAjax(message) {
-    console.error('checking stashed context data');
-    console.error(message);
+ function setBarWidth(value) {
+   var scale = {
+     min : 225,
+     max : 370
+   }
+   // calculate % along scale, i.e. width of the bar
+   var width = 100 * (value - scale.min)/(scale.max - scale.min)
+   // if width < 0, set to 0
+   width = (width < 0 ? 0 : width)
+   // if width > 100, set to 100
+   width = (width > 100 ? 100 : width)
+   // set the width of the bar
+   document.getElementById('bar-fill').style.width = width + '%';
 
-    var ajaxData = {};
-    ajaxData = message;
+   // define an array of colors to set the bar to, depending on <width>
+   var colors = ['#aa0202', '#ff5500', '#ffa500', '#ffd800', '#f8e683']
+   // how big is each color category
+   var binSize = (scale.max - scale.min)/(colors.length + 1)
+   // get the relevant color from the array, based on the width of the bar
+   color = colors[Math.round(width/binSize)]
+   // set the color of the bar
+   document.getElementById('bar-fill').style.backgroundColor = color;
+ }
 
-    $.ajax({
-	type: 'POST',
-	url: 'upload',
-	data: ajaxData,
-	success: processOK,
-	error: processNotOK
-    });
-}
+ function processOK(response) {
+     console.log("response");
+     console.log(response);
+
+     document.getElementById("ml-output").innerHTML = response.values[0][3].toFixed(2);
+     setBarWidth(response.values[0][3])
+ }
+
+ function processNotOK() {
+     chat('Error', 'Error whilst attempting to talk to Watson Machine Learning');
+ }
+
+ function getWatsonMLIntensity(message) {
+     console.log('checking stashed context data');
+     console.log(message);
+
+     var ajaxData = {};
+     ajaxData = message;
+
+     $.ajax({
+     	type: 'POST',
+     	url: 'modelintensity',
+     	data: ajaxData,
+     	success: processOK,
+     	error: processNotOK
+     });
+ }
