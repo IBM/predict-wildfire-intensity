@@ -40,8 +40,6 @@ var map_apikey= process.env.MAP_APIKEY;
 
 application.use(bodyParser.urlencoded({ extended: true }));
 
-// setupError will be set to an error message if we cannot recover from service setup or init error.
-
 application.use(express.static(__dirname + "/public"));
 
 application.post('/modelintensity', function(req, res) {

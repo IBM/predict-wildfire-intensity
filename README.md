@@ -61,19 +61,19 @@ $ git clone https://github.com/IBM/predict-wildfires
 
 * On [Watson Studio](https://dataplatform.cloud.ibm.com/) choose `New project`:
 
-![](https://github.com/IBM/pattern-images/blob/master/watson-studio/studio_choices.png)
+<img src=https://github.com/IBM/pattern-images/blob/master/watson-studio/studio_choices.png width=500 height=100>
 
 and pick `Data Science`:
 
-![](https://github.com/IBM/pattern-images/blob/master/watson-studio/project_choices.png)
+<img src=https://github.com/IBM/pattern-images/blob/master/watson-studio/project_choices.png width=600 height=400>
 
 * Name the project and select your object storage:
 
-![](https://github.com/IBM/pattern-images/blob/master/watson-studio/new_project.png)
+<img src=https://github.com/IBM/pattern-images/blob/master/watson-studio/new_project.png width=600 height=400>
 
 * Choose `+ Add to project` -> `Data asset` or click the `10/01` button and add the data you downloaded in [Prerequisites](#prerequisites) (MODIS_C6_*_7d.csv):
 
-![](https://github.com/IBM/pattern-images/blob/master/watson-studio/watson-studio-add-data.png)
+<img src=https://github.com/IBM/pattern-images/blob/master/watson-studio/watson-studio-add-data.png width=250 height=200>
 
 * Under the `Settings` tab -> `Associated Services` choose `+ Add service` -> `Watson` and select `Machine Learning`. Either choose an `Existing` ML Service or create a `New` one.
 
