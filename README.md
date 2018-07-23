@@ -141,6 +141,10 @@ WML_PASSWORD=""
 
 * Start the app with `npm start`. The app will now be running and available on you machine in a browser at `http://localhost:3000`.
 
+# Sample Output
+
+![video-to-gif](doc/source/video/PredictWildfireDemo.gif)
+
 # Links
 
 * [IBM Call for Code](https://developer.ibm.com/callforcode/)Answer the Call for Code by building global solutions for disaster preparedness.
