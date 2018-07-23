@@ -143,6 +143,11 @@ WML_PASSWORD=""
 
 # Links
 
+* [IBM Call for Code](https://developer.ibm.com/callforcode/)Answer the Call for Code by building global solutions for disaster preparedness.
+* [NASA FIRMS (Fire Information for Resource Management)](https://firms.modaps.eosdis.nasa.gov/map/#z:3;c:-37.5,12.1;l:24hrs)Fires in the last 24 hours.
+* [Can Scientists Predict a Wildfire's Spread?](https://www2.ucar.edu/atmosnews/perspective/2990/can-scientists-predict-wildfire-s-spread)
+* [Predict a Wildfire's Behavior in Real Time](https://www.scientificamerican.com/article/finally-a-way-to-predict-a-wildfires-behavior-in-real-time/)
+
 # Learn more
 
 * **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/code/technologies/artificial-intelligence/).
