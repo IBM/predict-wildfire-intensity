@@ -139,7 +139,7 @@ WML_PASSWORD=""
 
 * Install the nodejs modules with `npm install`.
 
-* Start the app with `npm start`. The app will now be running and available on you machine ina a browser at `http://localhost:3000`.
+* Start the app with `npm start`. The app will now be running and available on you machine in a browser at `http://localhost:3000`.
 
 # Links
 
