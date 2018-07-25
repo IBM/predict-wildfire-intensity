@@ -51,10 +51,14 @@ application.post('/modelintensity', function(req, res) {
 	try {
 	    parsedPostResponse = JSON.parse(this.responseText);
 	} catch (ex) {
-	    // TODO: handle parsing exception
+	    console.log("Error parsing response.");
 	}
 	console.log("Scoring response");
 	console.log(parsedPostResponse);
+	if (parsedPostResponse.errors && parsedPostResponse.errors[0].message === "Expired authorization token."){
+	  console.log("Token has expired. Requesting new token...")
+	  getToken();
+	}
 	res.send(parsedPostResponse);
 
     }, function (error) {
@@ -87,19 +91,8 @@ function wml_apiPost(scoring_url, token, payload, loadCallback, errorCallback){
 	oReq.send(payload);
 }
 
-fs.readFile("public/index.html", 'utf8', function (err,data) {
-  if (err) {
-    console.log("error: " + err);
-    return;
-  }
-
-  var result = data.replace("APIKEY", map_apikey);
-  fs.writeFile("public/index.html", result, 'utf8', function (err) {
-      console.log("FS Write Err: " + err);
-  });
-});
-
-wml_api_Get(wml_url,
+function getToken(){
+    wml_api_Get(wml_url,
 	wml_username,
 	wml_password,
 	function (res) {
@@ -118,7 +111,22 @@ wml_api_Get(wml_url,
 	}, function (err) {
 	    console.log(err);
 	  }
-);
+    );
+}
+
+fs.readFile("public/index.html", 'utf8', function (err,data) {
+  if (err) {
+    console.log("error: " + err);
+    return;
+  }
+
+  var result = data.replace("APIKEY", map_apikey);
+  fs.writeFile("public/index.html", result, 'utf8', function (err) {
+      console.log("FS Write Err: " + err);
+  });
+});
+
+getToken();
 
 const port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
 
