@@ -45,9 +45,9 @@ When the reader has completed this Code Pattern, they will understand how to:
 1. [Get the credentials](#3-get-the-credentials)
 1. [Either Deploy to IBM Cloud or Deploy locally]
 
-    3a. [Deploy to IBM Cloud](deploy-to-ibm-cloud)
+    3a. [Deploy to IBM Cloud](#3a-deploy-to-ibm-cloud)
 
-    3b. [Deploy locally](deploy-locally)
+    3b. [Deploy locally](#3b-deploy-locally)
 
 ### 1. Clone the repo
 
@@ -109,7 +109,7 @@ and pick `Data Science`:
 
 * You will use the `username`, `password`, `url`, and 'maps API key' in either the Runtime Environment variables when [running on IBM Cloud](#deploy-to-ibm-cloud) or in the `server/.env` file when [running locally](#run-locally). These will be `WML_URL`, `WML_USERNAME`, `WML_PASSWORD`, and `MAP_APIKEY`.
 
-### Deploy to IBM Cloud
+### 3.a Deploy to IBM Cloud
 
 [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/predict-wildfires)
 
@@ -124,7 +124,7 @@ To monitor the deployment, in Toolchains click on `Delivery Pipeline`  and view 
 * Update the 5 environment variables with the `SCORING_URL`, `WML_URL`, `WML_USERNAME`, `WML_PASSWORD`, and `MAP_APIKEY` that you saved during [Get the credentials](#get-the-credentials).
 The app will automatically restart and be ready for use.
 
-### Deploy locally
+### 3.b Deploy locally
 
 * In the `server/` directory, move the `env.sample` file to `.env`.
 
