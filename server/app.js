@@ -24,7 +24,7 @@ const bodyParser = require('body-parser');
 const my_btoa = require("btoa");
 const express = require("express");
 const fs = require("fs");
-const application = express();
+const app = express();
 const my_XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 
@@ -38,11 +38,11 @@ var wml_username = process.env.WML_USERNAME;
 var wml_password = process.env.WML_PASSWORD;
 var map_apikey= process.env.MAP_APIKEY;
 
-application.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-application.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public"));
 
-application.post('/modelintensity', function(req, res) {
+app.post('/modelintensity', function(req, res) {
 
     var payload = '{"fields": ["latitude", "longitude"], "values": [[' + req.body.lat + ',' + req.body.lng + ']]}';
 
@@ -128,8 +128,10 @@ fs.readFile("public/index.html", 'utf8', function (err,data) {
 
 getToken();
 
-const port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
+//const port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
 
-application.listen(port, function () {
-    console.log("Server running on port: %d", port);
-});
+//app.listen(port, function () {
+    //console.log("Server running on port: %d", port);
+//});
+
+module.exports = app;

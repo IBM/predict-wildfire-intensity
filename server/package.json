@@ -4,7 +4,7 @@
   "version": "0.1.1",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node server.js",
     "test-integration": "casperjs test ../test/integration/test.*.js",
     "test-integration-runner": "NODE_ENV=test node casper-runner.js",
     "test": "npm run test-integration-runner",
@@ -43,7 +43,8 @@
     "phantomjs-prebuilt": "^2.1.13",
     "prettier": "^1.12.1",
     "request": "^2.87.0",
-    "supertest": "^3.1.0"
+    "supertest": "^3.1.0",
+    "zombie": "6.0"
   },
   "engines": {
     "node": ">= 6.9.x",
