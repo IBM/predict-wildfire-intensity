@@ -9,6 +9,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 * Use [Watson Studio](https://console.bluemix.net/catalog/services/watson-studio) [Machine Learning](https://console.bluemix.net/catalog/services/machine-learning) to train a model.
 * Gather data from NASA for Wildfires.
 * Create a predictor for intensity of wildfires based on latitude and longitude.
+* Create a Node.js server that can utilize the Watson Machine Learning service for predicting wildfire intensity.
 
 ![](doc/source/images/architecture.png)
 
@@ -27,6 +28,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 ## Featured technologies
 
 * [Artificial Intelligence](https://medium.com/ibm-data-science-experience): Artificial intelligence can be applied to disparate solution spaces to deliver disruptive technologies.
+* [Node.js](https://nodejs.org/): An asynchronous event driven JavaScript runtime, designed to build scalable applications.
 
 <!--
 # Watch the Video
@@ -34,6 +36,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 # Prerequisites
 
+* Install [Node.js and npm](https://nodejs.org/en/download/) (`npm` version 4.5.0 or higher)
 * For this pattern you will need to download [current wildfire data](https://firms.modaps.eosdis.nasa.gov/active_fire/#firms-txt) in CSV format. Please choose `7d` for 7 days worth of information.
 * You may additionally download [archived data](https://firms.modaps.eosdis.nasa.gov/download/) which will take time due to the request process.
 * You will need a [Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
@@ -152,6 +155,7 @@ MAP_APIKEY=""
 * [NASA FIRMS (Fire Information for Resource Management)](https://firms.modaps.eosdis.nasa.gov/map/#z:3;c:-37.5,12.1;l:24hrs)Fires in the last 24 hours.
 * [Can Scientists Predict a Wildfire's Spread?](https://www2.ucar.edu/atmosnews/perspective/2990/can-scientists-predict-wildfire-s-spread)
 * [Predict a Wildfire's Behavior in Real Time](https://www.scientificamerican.com/article/finally-a-way-to-predict-a-wildfires-behavior-in-real-time/)
+* [Watson Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
 
 # Learn more
 
