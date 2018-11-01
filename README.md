@@ -45,7 +45,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 1. [Clone the repo](#1-clone-the-repo)
 1. [Create Watson Studio services with IBM Cloud](#2-create-watson-studio-services-with-ibm-cloud)
 1. [Get the credentials](#3-get-the-credentials)
-1. [Either Deploy to IBM Cloud or Deploy locally]
+1. Either Deploy to IBM Cloud or Deploy locally
 
     3a. [Deploy to IBM Cloud](#3a-deploy-to-ibm-cloud)
 
@@ -109,7 +109,7 @@ and pick `Data Science`:
 
 * You will need your [Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
 
-* You will use the `username`, `password`, `url`, and 'maps API key' in either the Runtime Environment variables when [running on IBM Cloud](#deploy-to-ibm-cloud) or in the `server/.env` file when [running locally](#run-locally). These will be `WML_URL`, `WML_USERNAME`, `WML_PASSWORD`, and `MAP_APIKEY`.
+* You will use the `username`, `password`, `url`, and `maps API key` in either the Runtime Environment variables when [running on IBM Cloud](#deploy-to-ibm-cloud) or in the `server/.env` file when [running locally](#run-locally). These will be `WML_URL`, `WML_USERNAME`, `WML_PASSWORD`, and `MAP_APIKEY`.
 
 ### 3.a Deploy to IBM Cloud
 
@@ -117,9 +117,9 @@ and pick `Data Science`:
 
 * Press the above ``Deploy to IBM Cloud`` button, under `IBM Cloud API Key:` choose `Create+`, and then click on ``Deploy``.
 
-To monitor the deployment, in Toolchains click on `Delivery Pipeline`  and view the logs while the apps is being deployed.
+To monitor the deployment, in `Toolchains` click on `Delivery Pipeline`  and view the logs while the apps is being deployed.
 
-* Once the app has deployed, Click on `Runtime` on the menu and navigate to the `Environment variables` tab.
+* Once the app has deployed, click on `Runtime` on the menu and navigate to the `Environment variables` tab.
 
 ![](doc/source/images/UpdateCloudEnvVariables.png)
 
