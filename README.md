@@ -1,11 +1,11 @@
 # Predict Wildfire Intensity with Watson Studio Machine Learning
 
-For this Code Pattern, we will use [data on Wildfires](https://firms.modaps.eosdis.nasa.gov/active_fire/#firms-txt) from [NASA](https://earthdata.nasa.gov/) to predict the intensity of Wildfires, using [Watson Studio](https://console.bluemix.net/catalog/services/watson-studio) [Machine Learning](https://console.bluemix.net/catalog/services/machine-learning).
+For this Code Pattern, we will use [data on Wildfires](https://firms.modaps.eosdis.nasa.gov/active_fire/#firms-txt) from [NASA](https://earthdata.nasa.gov/) to predict the intensity of Wildfires, using [Watson Studio](https://cloud.ibm.com/catalog/services/watson-studio) [Machine Learning](https://cloud.ibm.com/catalog/services/machine-learning).
 NASA provides data for various things, from weather and climate to solar flares and wildfire. This data is paid for by U.S. taxpayers and is free to use. The missing component is machine learning, which can take data and train a model to predict one of the features of the data set. For this example, we'll grab wildfire data and build a model that can predict intensity of the fire base on latitude and longitude.
 
 When the reader has completed this Code Pattern, they will understand how to:
 
-* Use [Watson Studio](https://console.bluemix.net/catalog/services/watson-studio) [Machine Learning](https://console.bluemix.net/catalog/services/machine-learning) to train a model.
+* Use [Watson Studio](https://cloud.ibm.com/catalog/services/watson-studio) [Machine Learning](https://cloud.ibm.com/catalog/services/machine-learning) to train a model.
 * Gather data from NASA for Wildfires.
 * Create a predictor for intensity of wildfires based on latitude and longitude.
 * Create a Node.js server that can utilize the Watson Machine Learning service for predicting wildfire intensity.
@@ -21,8 +21,8 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ## Included components
 
-* [Watson Studio](https://console.bluemix.net/catalog/services/watson-studio)
-* [Machine Learning](https://console.bluemix.net/catalog/services/machine-learning)
+* [Watson Studio](https://cloud.ibm.com/catalog/services/watson-studio)
+* [Machine Learning](https://cloud.ibm.com/catalog/services/machine-learning)
 
 ## Featured technologies
 
@@ -113,7 +113,7 @@ and pick `Data Science`:
 
 ### 3.a Deploy to IBM Cloud
 
-[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/predict-wildfires)
+[![Deploy to IBM Cloud](https://cloud.ibm.com/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/predict-wildfires)
 
 * Press the above ``Deploy to IBM Cloud`` button, under `IBM Cloud API Key:` choose `Create+`, and then click on ``Deploy``.
 
@@ -163,7 +163,7 @@ MAP_APIKEY=""
 * **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
 * **With Watson**: Want to take your Watson app to the next level? Looking to utilize Watson Brand assets? [Join the With Watson program](https://www.ibm.com/watson/with-watson/) to leverage exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
 * **Data Science Experience**: Master the art of data science with IBM's [Data Science Experience](https://datascience.ibm.com/)
-* **Spark on IBM Cloud**: Need a Spark cluster? Create up to 30 Spark executors on IBM Cloud with our [Spark service](https://console.bluemix.net/catalog/services/apache-spark)
+* **Spark on IBM Cloud**: Need a Spark cluster? Create up to 30 Spark executors on IBM Cloud with our [Spark service](https://cloud.ibm.com/catalog/services/apache-spark)
 
 # License
 This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
