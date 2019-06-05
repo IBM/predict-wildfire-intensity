@@ -1,3 +1,7 @@
+# WARNING: This repository is no longer maintained :warning:
+
+> This repository will not be updated. The repository will be kept available in read-only mode.
+
 # Predict Wildfire Intensity with Watson Studio Machine Learning
 
 For this Code Pattern, we will use [data on Wildfires](https://firms.modaps.eosdis.nasa.gov/active_fire/#firms-txt) from [NASA](https://earthdata.nasa.gov/) to predict the intensity of Wildfires, using [Watson Studio](https://cloud.ibm.com/catalog/services/watson-studio) [Machine Learning](https://cloud.ibm.com/catalog/services/machine-learning).
